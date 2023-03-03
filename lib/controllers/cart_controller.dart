@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:khana_sabailai_user/baseurl.dart';
 import 'package:khana_sabailai_user/controllers/bottomtab_controller.dart';
+import 'package:khana_sabailai_user/controllers/order_controller.dart';
 import 'package:khana_sabailai_user/models/cart.dart';
 import 'package:khana_sabailai_user/models/menu.dart';
 import 'package:khana_sabailai_user/models/user.dart';
@@ -109,6 +110,10 @@ class CartController extends GetxController {
         final mainController = Get.find<BottomTabController>();
         mainController.currentIndex = 3;
         mainController.update();
+
+        final orderController = Get.find<OrderController>();
+        orderController.fetchOrders();
+        orderController.update();
 
         Get.toNamed(GetRoutes.orderScreen);
 

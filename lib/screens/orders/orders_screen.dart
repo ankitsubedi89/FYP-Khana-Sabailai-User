@@ -186,9 +186,9 @@ class OrderCard extends StatelessWidget {
               ),
             ],
           ),
-          const Text(
-            'Restaurant: Almonds',
-            style: TextStyle(
+          Text(
+            'Restaurant: ${order.restaurantName}',
+            style: const TextStyle(
               fontSize: 14,
             ),
           ),

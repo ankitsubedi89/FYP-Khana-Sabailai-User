@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:khana_sabailai_user/controllers/cart_controller.dart';
 import 'package:khana_sabailai_user/models/cart.dart';
+import 'package:khana_sabailai_user/screens/payment.dart';
 import 'package:khana_sabailai_user/widgets/cart_row.dart';
 import 'package:khana_sabailai_user/widgets/custom_button.dart';
 
@@ -82,8 +83,16 @@ class CartScreen extends StatelessWidget {
                         const SizedBox(height: 10),
                         CustomButton(
                             label: 'Order Now',
-                            onPressed: () {
+                            onPressed: () async {
                               if (!controller.isLoading) {
+                                final token = await showDialog(
+                                    context: (context),
+                                    builder: (context) {
+                                      return const KhaltiPayment();
+                                    });
+                                if (token == null) {
+                                  return;
+                                }
                                 controller.makeOrder();
                               }
                             }),

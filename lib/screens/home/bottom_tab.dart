@@ -63,12 +63,15 @@ class BottomTab extends StatelessWidget {
               label: 'Cart',
             ),
             const BottomNavigationBarItem(
-              icon: IconWithBadge(
-                icon: FaIcon(
-                  FontAwesomeIcons.person,
+              // icon: IconWithBadge(
+              //   icon: FaIcon(
+              //     FontAwesomeIcons.accusoft,
+              //     size: 20,
+              //   ),
+                icon: Icon(
+                  Icons.account_circle,
                   size: 20,
                 ),
-              ),
               label: 'Account',
             ),
           ],

@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:khana_sabailai_user/controllers/bottomtab_controller.dart';
@@ -70,16 +73,29 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                Wrap(
-                  children: controller.allRestaurants
-                      .map((restaurant) => RestaurantCard(
-                            height: 112,
-                            marginRight: 5,
-                            marginBottom: 10,
-                            restaurant: restaurant,
-                          ))
-                      .toList(),
-                )
+                MasonryGridView.count(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    itemCount: controller.allRestaurants.length,
+                    itemBuilder: (context, index) {
+                      return RestaurantCard(
+                        restaurant: controller.allRestaurants[index],
+                        height: Random().nextInt(150) + 100,
+                      );
+                    })
+                // Wrap(
+                //   children: controller.allRestaurants
+                //       .map((restaurant) => RestaurantCard(
+                //             height: 112,
+                //             marginRight: 5,
+                //             marginBottom: 10,
+                //             restaurant: restaurant,
+                //           ))
+                //       .toList(),
+                // )
               ],
             ),
           ),

@@ -36,7 +36,7 @@ class RestaurantCard extends StatelessWidget {
               tag: 'restaurant${restaurant.id}${fromNear! ? 'near' : ''}',
               child: Container(
                   height: height,
-                  width: height,
+                  width: MediaQuery.of(context).size.width * 0.4,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.0),
                       image: DecorationImage(
@@ -51,7 +51,7 @@ class RestaurantCard extends StatelessWidget {
               left: 0,
               child: Container(
                 height: height,
-                width: height,
+                width: MediaQuery.of(context).size.width * 0.4,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 decoration: BoxDecoration(

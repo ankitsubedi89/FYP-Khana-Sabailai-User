@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:khana_sabailai_user/controllers/main_controller.dart';
@@ -36,22 +39,18 @@ class RestaurantScreen extends StatelessWidget {
                   }),
                   const SizedBox(height: 20),
                   Expanded(
-                    child: SingleChildScrollView(
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                          Wrap(
-                            children: controller.filteredRestaurants
-                                .map((restaurant) => RestaurantCard(
-                                      height: 112,
-                                      marginRight: 5,
-                                      marginBottom: 10,
-                                      restaurant: restaurant,
-                                    ))
-                                .toList(),
-                          )
-                        ])),
-                  ),
+                    child: MasonryGridView.count(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                        itemCount: controller.filteredRestaurants.length,
+                        itemBuilder: (context, index) {
+                          return RestaurantCard(
+                            restaurant: controller.filteredRestaurants[index],
+                            height: Random().nextInt(100) + 100,
+                          );
+                        }),
+                  )
                 ],
               )));
     });

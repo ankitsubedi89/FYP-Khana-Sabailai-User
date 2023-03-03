@@ -8,7 +8,8 @@ class CustomFormField extends StatelessWidget {
       this.prefixIcon,
       this.isObscure = false,
       this.onChanged,
-      this.hint = ''})
+      this.hint = '',
+      this.keyboardType = TextInputType.name})
       : super(key: key);
 
   final String label;
@@ -17,6 +18,7 @@ class CustomFormField extends StatelessWidget {
   final bool isObscure;
   final Function(String)? onChanged;
   final String hint;
+  final TextInputType keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,7 @@ class CustomFormField extends StatelessWidget {
         ],
       ),
       child: TextFormField(
+        keyboardType: keyboardType,
         onChanged: onChanged,
         controller: controller,
         obscureText: isObscure,
