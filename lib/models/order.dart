@@ -39,6 +39,9 @@ class Order {
   String? restaurantName;
   String? restaurantContact;
   String? restaurantAddress;
+  String? userName;
+  String? userAddress;
+  String? userContact;
   List<OrderLines>? orderLines;
 
   Order(
@@ -53,6 +56,9 @@ class Order {
       this.restaurantName,
       this.restaurantContact,
       this.restaurantAddress,
+      this.userName,
+      this.userAddress,
+      this.userContact,
       this.orderLines});
 
   Order.fromJson(Map<String, dynamic> json) {
@@ -67,6 +73,10 @@ class Order {
     restaurantName = json['restaurant_name'];
     restaurantContact = json['restaurant_contact'];
     restaurantAddress = json['restaurant_address'];
+    userName = json['user_name'];
+    userAddress = json['user_address'];
+    userContact = json['user_contact'];
+
     if (json['order_lines'] != null) {
       orderLines = <OrderLines>[];
       json['order_lines'].forEach((v) {
@@ -88,6 +98,9 @@ class Order {
     data['restaurant_name'] = restaurantName;
     data['restaurant_contact'] = restaurantContact;
     data['restaurant_address'] = restaurantAddress;
+    data['user_name'] = userName;
+    data['user_address'] = userAddress;
+    data['user_contact'] = userContact;
     if (orderLines != null) {
       data['order_lines'] = orderLines!.map((v) => v.toJson()).toList();
     }

@@ -9,7 +9,7 @@ import 'package:khana_sabailai_user/routes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Khalti.init(
-      publicKey: 'test_public_key_dde0878862604f24b2475a9806c833d2',
+      publicKey: 'test_public_key_2d8585dfcb7e4c14a3b797b1a83d54d8',
       enabledDebugging: false);
   runApp(const MyApp());
 }

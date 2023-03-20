@@ -100,7 +100,7 @@ class SingleFoodScreen extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                  'Available Quantity ${menu.quantity!}',
+                  'Available Quantity: ${menu.quantity!}',
                   style: const TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 16,

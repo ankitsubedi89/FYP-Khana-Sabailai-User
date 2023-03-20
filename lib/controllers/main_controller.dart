@@ -5,15 +5,15 @@ import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:khana_sabailai_user/baseurl.dart';
 import 'package:khana_sabailai_user/models/restaurant.dart';
-import 'package:khana_sabailai_user/utils/handle_geo_permissions.dart';
 import 'package:http/http.dart' as http;
 import 'package:khana_sabailai_user/utils/utils.dart';
 
 class MainController extends GetxController {
   String currentAddress = '';
-  Position? currentPosition;
+  Rx<Position?> currentPosition = Rx<Position?>(null);
+  var distance = -1.obs;
 
-  bool isLoading = false;
+  var isLoading = false.obs;
 
   List<Restaurant> allRestaurants = [];
   List<Restaurant> filteredRestaurants = [];
@@ -29,30 +29,27 @@ class MainController extends GetxController {
   }
 
   Future<void> getCurrentPosition() async {
-    final hasPermission = await handleLocationPermission();
-
-    if (!hasPermission) return;
-    await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
+    isLoading.value = true;
+    // await handleGeoPermissions();
+    await Geolocator.getCurrentPosition(
+            desiredAccuracy: LocationAccuracy.high)
         .then((Position position) {
-      currentPosition = position;
-
-      print(currentPosition);
+      currentPosition.value = position;
       getAddressFromLatLng(position);
       fetchNearRestaurants(position);
-      update();
     }).catchError((e) {});
+    isLoading.value = false;
   }
 
-  Future<void> getAddressFromLatLng(Position position) async {
-    await placemarkFromCoordinates(
-            currentPosition!.latitude, currentPosition!.longitude)
-        .then((List<Placemark> placemarks) {
-      Placemark place = placemarks[0];
 
-      currentAddress =
-          '${place.street}, ${place.subLocality}, ${place.subAdministrativeArea}, ${place.postalCode}';
-      update();
-    }).catchError((e) {});
+  Future<void> getAddressFromLatLng(Position position) async {
+    isLoading.value = true;
+    List<Placemark> placemarks = await placemarkFromCoordinates(
+        position.latitude, position.longitude);
+    Placemark place = placemarks[0];
+    currentAddress = '${place.locality}, ${place.administrativeArea}';
+    isLoading.value = false;
+    update();
   }
 
   search(String val) {
@@ -67,9 +64,10 @@ class MainController extends GetxController {
     }
     update();
   }
+ 
 
   fetchAllRestaurants() async {
-    isLoading = true;
+    isLoading.value = true;
     update();
     var response = await http
         .get(Uri.parse('${baseurl}restaurants/getAllRestaurants.php'));
@@ -80,12 +78,12 @@ class MainController extends GetxController {
     } else {
       customGetSnackbar('Restaurant Fetch Failed', res['message'], 'error');
     }
-    isLoading = false;
+    isLoading.value = false;
     update();
   }
 
   fetchNearRestaurants(Position position) async {
-    isLoading = true;
+    isLoading.value = true;
     update();
     var response = await http
         .post(Uri.parse('${baseurl}restaurants/nearRestaurants.php'), body: {
@@ -97,7 +95,7 @@ class MainController extends GetxController {
     if (res['success']) {
       nearRestaurants = AllRestaurants.fromJson(res).restaurant!;
     }
-    isLoading = false;
+    isLoading.value = false;
     update();
   }
 }
