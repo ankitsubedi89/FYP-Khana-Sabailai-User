@@ -103,6 +103,7 @@ class SingleRestaurant extends StatelessWidget {
                               child: CircularProgressIndicator(),
                             )
                           : Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                 'Current Latitude: ${mainController.currentPosition.value != null ? mainController.currentPosition.value!.latitude.toString() : ''}',

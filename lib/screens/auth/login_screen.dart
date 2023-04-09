@@ -56,14 +56,16 @@ class LoginScreen extends StatelessWidget {
                       controller: controller.passwordController,
                     ),
                     const SizedBox(height: 15),
-                    CustomButton(
-                        label: 'Login',
-                        onPressed: () {
-                          controller.checkLogin();
-                        })
+                    Center(
+                      child: CustomButton(
+                          label: 'Login',
+                          onPressed: () {
+                            controller.checkLogin();
+                          }),
+                    )
                   ],
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 30),
                 RichTextBar(
                   normal: 'Don\'t have an account? ',
                   rich: 'Click here',

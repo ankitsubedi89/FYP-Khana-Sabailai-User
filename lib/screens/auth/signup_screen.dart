@@ -82,14 +82,16 @@ class SignupScreen extends StatelessWidget {
                       controller: controller.confirmPasswordController,
                     ),
                     const SizedBox(height: 15),
-                    CustomButton(
-                        label: 'Sign Up',
-                        onPressed: () {
-                          controller.checkSignup();
-                        })
+                    Center(
+                      child: CustomButton(
+                          label: 'Sign Up',
+                          onPressed: () {
+                            controller.checkSignup();
+                          }),
+                    )
                   ],
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 30),
                 RichTextBar(
                   normal: 'Already have an account? ',
                   rich: 'Login',

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:khana_sabailai_user/controllers/bottomtab_controller.dart';
+import 'package:khana_sabailai_user/controllers/cart_controller.dart';
 import 'package:khana_sabailai_user/controllers/menu_controller.dart';
 import 'package:khana_sabailai_user/models/category.dart';
 import 'package:khana_sabailai_user/models/restaurant.dart';
@@ -18,6 +20,55 @@ class CategoryScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(category.name!),
+        actions: [
+          GetBuilder<CartController>(
+            builder: (controller) {
+              return InkWell(
+                onTap: (){
+                  Get.back();
+                  Get.back();
+                  final bottomTabController = Get.find<BottomTabController>();
+                  bottomTabController.onTabTapped(2);
+                },
+                child: Stack(clipBehavior: Clip.none, children: [
+                     const Icon(Icons.shopping_cart, size: 40,),
+                    if (controller.cartList.isNotEmpty)
+                      Positioned(
+                  top: 1,
+                  right: 1,
+                  child: Container(
+                    height: 20,
+                    width: 20,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      controller.cartList.length.toString(),
+                      style: const TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.w600),
+                    ),
+                  ))
+                  ]),
+              );
+            }
+          )
+          // Stack(
+          //   children: [
+          //     IconButton(
+          //       onPressed: () {
+          //         Get.back();
+          //         Get.back();
+          //         final bottomTabController = Get.find<BottomTabController>();
+          //         bottomTabController.onTabTapped(2);
+          //       },
+          //       icon: const Icon(Icons.shopping_cart),
+          //     ),
+              
+          //   ],
+          // ),
+        ],
       ),
       body: GetBuilder<MenuController>(builder: (controller) {
         return Container(

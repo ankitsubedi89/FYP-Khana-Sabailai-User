@@ -74,7 +74,7 @@ class SignupController extends GetxController {
     });
     var res = await json.decode(response.body);
     if (res['success']) {
-      Get.offAllNamed(GetRoutes.login);
+      // Get.offAllNamed(GetRoutes.login);
       nameController.clear();
       contactController.clear();
       addressController.clear();

@@ -47,6 +47,7 @@ class LoginController extends GetxController {
       emailController.clear();
       passwordController.clear();
       Get.offAllNamed(GetRoutes.bottomTab);
+      customGetSnackbar('Login', 'Login Successfully', 'success');
     } else {
       customGetSnackbar('Login up failed!', res['message'][0], 'error');
     }
