@@ -97,38 +97,36 @@ class SingleRestaurant extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                     Container(
-                      child: Obx((() =>( mainController.isLoading.value || mainController.currentPosition.value == null)
-                          ? const Center(
-                              child: CircularProgressIndicator(),
-                            )
-                          : Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                'Current Latitude: ${mainController.currentPosition.value != null ? mainController.currentPosition.value!.latitude.toString() : ''}',
-                              ),
-                                Text(
-                                  'Current Longitude: ${mainController.currentPosition.value != null ? mainController.currentPosition.value!.longitude.toString() : ''}',
-                                ),
-                                Text(
-                                  'Distance: ${
-                                  //rounding to 2 decimal places
-                                  double.parse(Geolocator.distanceBetween(mainController.currentPosition.value!.latitude, mainController.currentPosition.value!.longitude, double.parse(restaurant.lat!), double.parse(restaurant.lon!)).toStringAsFixed(2))} KM',
-                                ),
-                                Text(
-                                  'Time to reach in minutes: ${
-                                  //rounding to 2 decimal places
-                                  double.parse(double.parse(Geolocator.distanceBetween(mainController.currentPosition.value!.latitude, mainController.currentPosition.value!.longitude, double.parse(restaurant.lat!), double.parse(restaurant.lon!)).toStringAsFixed(4)).toStringAsFixed(2))} Minutes',
-                                ),
-                              ],
-                            ))),
-                    ),
+                     Obx((() =>( mainController.isLoading.value || mainController.currentPosition.value == null)
+                         ? const Center(
+                             child: CircularProgressIndicator(),
+                           )
+                         : Column(
+                           crossAxisAlignment: CrossAxisAlignment.start,
+                             children: [
+                               Text(
+                               'Current Latitude: ${mainController.currentPosition.value != null ? mainController.currentPosition.value!.latitude.toString() : ''}',
+                             ),
+                               Text(
+                                 'Current Longitude: ${mainController.currentPosition.value != null ? mainController.currentPosition.value!.longitude.toString() : ''}',
+                               ),
+                               Text(
+                                 'Distance: ${
+                                 //rounding to 2 decimal places
+                                 double.parse(Geolocator.distanceBetween(mainController.currentPosition.value!.latitude, mainController.currentPosition.value!.longitude, double.parse(restaurant.lat!), double.parse(restaurant.lon!)).toStringAsFixed(2))} KM',
+                               ),
+                               Text(
+                                 'Time to reach in minutes: ${
+                                 //rounding to 2 decimal places
+                                 double.parse(double.parse(Geolocator.distanceBetween(mainController.currentPosition.value!.latitude, mainController.currentPosition.value!.longitude, double.parse(restaurant.lat!), double.parse(restaurant.lon!)).toStringAsFixed(4)).toStringAsFixed(2))} Minutes',
+                               ),
+                             ],
+                           ))),
                    
 
                     //distance and time to reach
 
-                    GetBuilder<MenuController>(builder: (controller) {
+                    GetBuilder<MenueController>(builder: (controller) {
                       return Wrap(
                         children: controller.categories
                             .map((e) => InkWell(

@@ -49,7 +49,7 @@ class LoginController extends GetxController {
       Get.offAllNamed(GetRoutes.bottomTab);
       customGetSnackbar('Login', 'Login Successfully', 'success');
     } else {
-      customGetSnackbar('Login up failed!', res['message'][0], 'error');
+      customGetSnackbar('Login failed!', res['message'][0], 'error');
     }
   }
 

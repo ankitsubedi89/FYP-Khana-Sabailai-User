@@ -126,6 +126,7 @@ class SingleFoodScreen extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
+                if(menu.quantity! != '0')
                 GetBuilder<CartController>(builder: (controller) {
                   return Column(
                     children: [

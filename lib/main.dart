@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
     ]);
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'Khana Sabailai',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           appBarTheme: const AppBarTheme(

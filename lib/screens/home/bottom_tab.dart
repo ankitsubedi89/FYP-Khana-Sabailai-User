@@ -16,7 +16,7 @@ class BottomTab extends StatelessWidget {
   final userController = Get.put(UserController());
   final orderController = Get.put(OrderController());
   final bottomTabController = Get.put(BottomTabController());
-  final menuController = Get.put(MenuController());
+  final menuController = Get.put(MenueController());
   final cartController = Get.put(CartController());
 
   @override

@@ -6,7 +6,7 @@ import 'package:khana_sabailai_user/models/category.dart';
 import 'package:http/http.dart' as http;
 import 'package:khana_sabailai_user/models/menu.dart';
 
-class MenuController extends GetxController {
+class MenueController extends GetxController {
   List<Category> categories = [];
   List<Menu> menu = [];
 

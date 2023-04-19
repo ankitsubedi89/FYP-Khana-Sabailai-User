@@ -9,6 +9,7 @@ import 'package:khana_sabailai_user/controllers/main_controller.dart';
 import 'package:khana_sabailai_user/widgets/content_head.dart';
 import 'package:khana_sabailai_user/widgets/restaurant_card.dart';
 
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 

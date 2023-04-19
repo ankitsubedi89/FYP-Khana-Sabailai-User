@@ -70,7 +70,7 @@ class CategoryScreen extends StatelessWidget {
           // ),
         ],
       ),
-      body: GetBuilder<MenuController>(builder: (controller) {
+      body: GetBuilder<MenueController>(builder: (controller) {
         return Container(
             color: Colors.white,
             padding: const EdgeInsets.symmetric(horizontal: 20),

@@ -83,7 +83,7 @@ class SignupController extends GetxController {
       confirmPasswordController.clear();
 
       customGetSnackbar('Sign up Success!',
-          'User has been successfully signed in!', 'success');
+          'User has been successfully registered!', 'success');
     } else {
       customGetSnackbar('Sign up failed!', res['message'][0], 'error');
     }
