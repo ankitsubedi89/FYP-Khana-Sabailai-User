@@ -7,7 +7,7 @@ class CartBtn extends StatelessWidget {
     this.color,
     this.textColor,
     this.onTap,
-    this.labelSize = 30,
+    this.labelSize = 20,
     this.padding = const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
   }) : super(key: key);
 
@@ -15,20 +15,19 @@ class CartBtn extends StatelessWidget {
   final Color? color;
   final Color? textColor;
   final Function()? onTap;
-
   final double labelSize;
   final EdgeInsetsGeometry padding;
 
   @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
+Widget build(BuildContext context) {
+    return GestureDetector(  
       onTap: onTap,
       child: Container(
         padding: padding,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: color ?? const Color(0xffffffff),
-          borderRadius: BorderRadius.circular(11.0),
+          shape: BoxShape.circle,
           boxShadow: const [
             BoxShadow(
               color: Color(0x29000000),

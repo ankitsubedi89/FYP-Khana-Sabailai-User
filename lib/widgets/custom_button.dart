@@ -13,7 +13,7 @@ class CustomButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 7),
         decoration: BoxDecoration(
-          color: const Color(0xff020578),
+          color: Color.fromARGB(255, 51, 53, 119),
           borderRadius: BorderRadius.circular(14.0),
           border: Border.all(width: 1.0, color: const Color(0xffeaeaea)),
           boxShadow: const [
@@ -28,7 +28,7 @@ class CustomButton extends StatelessWidget {
           label,
           style: const TextStyle(
             fontFamily: 'Poppins',
-            fontSize: 21,
+            fontSize: 18,
             color: Color(0xffffffff),
             fontWeight: FontWeight.w500,
           ),

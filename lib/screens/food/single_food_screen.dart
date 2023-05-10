@@ -151,7 +151,7 @@ class SingleFoodScreen extends StatelessWidget {
                             controller.foodQuantity.toString(),
                             style: const TextStyle(
                               fontFamily: 'Poppins',
-                              fontSize: 67,
+                              fontSize: 57,
                               color: Color(0xff000000),
                               fontWeight: FontWeight.w600,
                             ),
